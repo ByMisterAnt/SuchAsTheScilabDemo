@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     x01 = 0;
     x02 = 0;
-    dt = 0.1;
+    dt = 0.05;
     Tau = 1;
     Tau2 = 1;
     K = 1;
@@ -22,6 +22,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     plot();
 
+    allSliders = findChildren<QSlider *>();
+
+            for(int i = 0; i < allSliders.size(); i++)
+            {
+                QObject::connect(allSliders.at(i), SIGNAL(valueChanged(int)), this,SLOT(plotter()));
+            }
+
 }
 
 MainWindow::~MainWindow()
@@ -29,44 +36,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-void MainWindow::on_horizontalSlider_valueChanged(int value)
+void MainWindow::plotter()
 {
-        x01 = 0;
-        x02 = 0;
+    int value = qobject_cast<QSlider *>(sender())->value();
+
+    QString slidersName = qobject_cast<QSlider *>(sender())->objectName();
+    if(slidersName == QString("horizontalSlider")){
         K = double(value)/25;
+    }
+    if(slidersName == QString("horizontalSlider_2")){
+        Tau = double(value)/25;
+    }
+    if(slidersName == QString("horizontalSlider_3")){
+        Tau2 = double(value)/500;
+    }
+    if(slidersName == QString("horizontalSlider_4")){
+        tzeta = double(value)/500;
+    }
 
-        calcSystem();
-
-        ui->widget->clearGraphs();
-        plot();
-}
-
-void MainWindow::on_horizontalSlider_2_valueChanged(int value)
-{
-    x01 = 0;
-    x02 = 0;
-    Tau = double(value)/25;
-
-    calcSystem();
-
-    ui->widget->clearGraphs();
-    plot();
-}
-
-void MainWindow::on_horizontalSlider_3_valueChanged(int value)
-{
-
-    x01 = 0;
-    x02 = 0;
-    Tau2 = double(value)/500;
+    showValues();
 
     calcSystem();
 
     ui->widget->clearGraphs();
     plot();
 }
+
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -87,6 +82,9 @@ void MainWindow::calcSystem()
     Time.clear();
     y.clear();
 
+    x01 = 0;
+    x02 = 0;
+
     for(int i = 0; i <= int(15/dt); i++)
     {
         //send step signal
@@ -98,7 +96,7 @@ void MainWindow::calcSystem()
 
     //calculate equations
     x01 = x01 + dt * (x02);
-    x02 = x02 + dt * (-x01/Tau2 - Tau*x02/Tau2 + K*step/Tau2);
+    x02 = x02 + dt * (-x01/(2*Tau2*tzeta) - Tau*x02/(2*Tau2*tzeta) + K*step/(2*Tau2*tzeta));
 
     y.push_back(x01);
     Time.push_back(i*dt);
@@ -111,5 +109,15 @@ void MainWindow::plot()
     ui->widget->addGraph();
     ui->widget->graph(0)->addData(Time,y);
     ui->widget->replot();
+
+    Time.clear();
+    y.clear();
 }
 
+void MainWindow::showValues()
+{
+    ui->k->setText("K = "+ QString::number(K));
+    ui->tau->setText("Tau = "+ QString::number(Tau));
+    ui->tau2->setText("Tau2 = "+ QString::number(Tau2));
+    ui->tzetta->setText("ξ = "+ QString::number(tzeta));
+}

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <QSlider>
 
 namespace Ui {
 class MainWindow;
@@ -18,23 +19,24 @@ public:
 
 private slots:
 
-    void on_horizontalSlider_valueChanged(int value);
-
-    void on_horizontalSlider_2_valueChanged(int value);
-
-    void on_horizontalSlider_3_valueChanged(int value);
-
     void on_pushButton_clicked();
+
+    void plotter();
 
     void calcSystem();
 
     void plot();
 
+    void showValues();
+
 private:
+
     Ui::MainWindow *ui;
 
+    QList<QSlider *> allSliders;
+
     double x01, x02, step, dt;
-    double Tau, Tau2, K;
+    double Tau, Tau2, tzeta, K;
     QVector<double> y;
     QVector<double> Time;
 };

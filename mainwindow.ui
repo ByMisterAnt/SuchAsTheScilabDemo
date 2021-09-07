@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>440</width>
-    <height>359</height>
+    <width>700</width>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -43,8 +49,8 @@ border: none;
        <widget class="QWidget" name="widget_2" native="true">
         <property name="minimumSize">
          <size>
-          <width>200</width>
-          <height>200</height>
+          <width>220</width>
+          <height>220</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -201,7 +207,7 @@ border: none;
               </item>
              </layout>
             </item>
-            <item row="3" column="0">
+            <item row="8" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <widget class="QPushButton" name="pushButton">
@@ -215,11 +221,38 @@ border: none;
               </item>
              </layout>
             </item>
+            <item row="5" column="0">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>ξ</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="horizontalSlider_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
            </layout>
           </widget>
          </item>
          <item>
           <widget class="QFrame" name="frame">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>300</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -229,19 +262,22 @@ border: none;
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="1" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <item>
              <widget class="QLabel" name="label_4">
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>100</height>
+                <width>190</width>
+                <height>50</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>200</width>
-                <height>100</height>
+                <height>50</height>
                </size>
               </property>
               <property name="sizeIncrement">
@@ -261,14 +297,113 @@ border: none;
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
-             <widget class="QFrame" name="frame_3">
+            <item>
+             <widget class="QFrame" name="frame_4">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>200</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="k">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="tau">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="tau2">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="tzetta">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
